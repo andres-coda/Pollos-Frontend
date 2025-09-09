@@ -8,12 +8,13 @@ import AppRouter from "./AppRouter";
 const AppHookConteiner = () => {
   return (
     <ErrorBoundary>
-      <ProveiderModalContext>        
+      <ProveiderModalContext>
         <BrowserRouter>
           <ProveiderGlobalContext>
-           <App>
+            <App
+            children={
               <AppRouter />
-            </App>
+            }/>
           </ProveiderGlobalContext>
         </BrowserRouter>
       </ProveiderModalContext>

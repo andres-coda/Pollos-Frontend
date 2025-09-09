@@ -1,0 +1,54 @@
+.centro {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: .5rem;
+  margin: 0;
+  gap: 1rem;
+  flex:1;
+  min-width: 780px;
+  max-width: 900px;
+  background-color: var(--colorBlanco);
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;  
+  scrollbar-color: var(--colorPrimario) var(--colorSecundario);
+  scrollbar-width:thin;
+}
+
+.div-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  gap:1rem;
+}
+
+.div-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 .5rem;
+  box-sizing: border-box;
+}
+
+.conteiner-buscador {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-right: 8px;
+  width: 100%;
+  flex: 1;
+  gap: 1.5rem;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: var(--colorPrimario) var(--colorSombra);
+  scrollbar-width: thin;
+  border-radius: 5px;
+}
+
+.div-checkbox{
+  height: fit-content;
+}

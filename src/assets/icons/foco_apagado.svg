@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24"
+     xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+     aria-labelledby="titleOff" role="img">
+  <title id="titleOff">Foco apagado</title>
+  <!-- bombilla -->
+  <circle cx="12" cy="10" r="6"/>
+  <!-- filamento (simple y sin brillo) -->
+  <path d="M9 12h6" opacity="0.6"/>
+  <!-- cuello y base -->
+  <rect x="9" y="15.5" width="6" height="2.5" rx="1"/>
+  <path d="M10 19h4"/>
+</svg>

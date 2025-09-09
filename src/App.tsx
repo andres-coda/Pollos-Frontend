@@ -6,7 +6,6 @@ interface AppProp {
   children: ReactNode;
 }
 function App({ children }: AppProp) {
-
   return (
     <>
       <div className="general">

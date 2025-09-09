@@ -4,6 +4,7 @@ import { FocoProp } from "../modelos/foco.esquema";
 import { AguaProp } from "../modelos/agua.esquema";
 import { TempProp } from "../modelos/temperatura.esquema";
 import { LugarProp } from "../modelos/lugar.esquema";
+import useLugaresApi from "../servicios/lugar/useLugaresApi";
 
 export interface LateralProp {
   titulo?: string | undefined;
@@ -21,7 +22,7 @@ interface GlobalContextEditProps {
 }
 
 interface GlobalContextProps {
-  lugar:LugarProp | [];
+  lugar:LugarProp[] | [];
 }
 
 export const contextGlobal = createContext<{
@@ -39,11 +40,23 @@ export const contextGlobal = createContext<{
 export const ProveiderGlobalContext = ({ children }: PropsModal) => {
   const [datos, setDatos] = useState<GlobalContextProps | null>(null);
   const [edit, setEdit] = useState<GlobalContextEditProps | null>(null);
+  const {obtenerlugares, responselugares} = useLugaresApi()
 
   useEffect(() => {
     socket.on('connect', () => console.log('Socket conectado:', socket.id));
     socket.on('disconnect', () => console.log('Socket desconectado'));
   }, []);
+
+  useEffect(()=> {
+    if(responselugares){
+      setDatos({lugar:responselugares})
+    }
+},[responselugares])
+
+useEffect(()=> {
+    obtenerlugares()
+},[])
+
 
   return (
     <contextGlobal.Provider value={{ datos, setDatos, edit, setEdit }}>
