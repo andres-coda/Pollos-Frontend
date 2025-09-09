@@ -12,9 +12,9 @@ export interface TempProp{
 
 export interface TempDtoCrear{
     nombre:string;
-    temp:string;
+    temperatura:string;
 }
 
 export interface TempDtoEditar{
-    temp:string;
+    temperatura:string;
 }

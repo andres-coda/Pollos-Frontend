@@ -1,6 +1,7 @@
 import { AguaProp } from "../modelos/agua.esquema";
 import { FocoProp } from "../modelos/foco.esquema";
-import { LugarAdapterProp, LugarProp } from "../modelos/lugar.esquema";
+import { FormValuesLugar } from "../modelos/formulario/lugar.esquema";
+import { LugarAdapterProp, LugarDtoCrear, LugarDtoEditar, LugarProp } from "../modelos/lugar.esquema";
 import { TempProp } from "../modelos/temperatura.esquema";
 import { AguaAdapterArray } from "./agua.adaptador";
 import { FocoAdapterArray } from "./foco.adaptador";
@@ -24,5 +25,24 @@ export const LugarAdapter =(prop:LugarAdapterProp):LugarProp => {
 
 export const LugarAdapterArray =(prop:LugarAdapterProp[]):LugarProp[] => {
     const lugar:LugarProp[]= prop.map(a=>LugarAdapter(a));
+    return lugar;
+}
+
+export const LugarAdapterDtoCrear = (prop:FormValuesLugar):LugarDtoCrear => {
+    const lugar:LugarDtoCrear = {
+        nombre:prop.nombre,
+        estado: prop.estado
+    }
+    return lugar;
+}
+
+export const LugarAdapterDtoEditar = (prop:FormValuesLugar):LugarDtoEditar => {
+    const lugar:LugarDtoEditar = {
+        nombre: prop.nombre,
+        estado: prop.estado,
+        foco:undefined,
+        agua:undefined,
+        temp:undefined
+    }
     return lugar;
 }
