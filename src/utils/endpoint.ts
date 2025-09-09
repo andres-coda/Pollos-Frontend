@@ -1,0 +1,1 @@
+export const BASE = "localhost:3000/"
