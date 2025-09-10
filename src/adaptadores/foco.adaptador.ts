@@ -6,6 +6,7 @@ export const FocoAdapter =(prop:FocoAdapterProp):FocoProp => {
         id:prop.id,
         nombre:prop.nombre,
         estado:prop.estado,
+        lugarId: prop.lugar.id
     }
     return foco;
 }
