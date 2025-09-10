@@ -33,8 +33,8 @@
 
 .btn-icono-chico{
   padding: 0;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
 }
 
 
@@ -95,4 +95,14 @@
 .btn-concepto{
   width: fit-content;
   padding: .5rem 1rem;
+}
+
+.btn-prendido{
+  color: var(--colorActivo);
+  background-color: var(--colorPrimario);
+}
+
+.btn-apagado{
+  color: var(--colorInactivo);
+  background-color: var(--colorSecundario);
 }

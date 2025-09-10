@@ -6,7 +6,6 @@
   margin: 0;
   gap: 1rem;
   flex:1;
-  min-width: 780px;
   max-width: 900px;
   background-color: var(--colorBlanco);
   border-radius: 5px;

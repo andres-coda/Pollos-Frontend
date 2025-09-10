@@ -3,15 +3,13 @@
   color: var(--colorNegro);
   background-color: var(--colorBlanco);
 
-  --colorPrimario:#212B6D;
+  --colorPrimario:#526453;
   --colorNegro: #000000;
   --colorSombra:#8D8B92;
-  --colorSecundario:#C6B8D5;
-  --colorFondoLateral:#EBEBF6;
+  --colorSecundario:#C7BCC9;
   --colorBlanco:#f2f2f3;
-  --colorActivo:#F6F6C7;
-  --colorInactivo:#F5E6F6;
-  --colorJubilado:#E2F0F6;
+  --colorActivo:#FFE500;
+  --colorInactivo:#98978F;
   --colorVerde:#D8F2B9;
   --colorError:#E40000;
 }
@@ -38,7 +36,6 @@ body {
   align-items: flex-start;
   width: 100vw;
   height: 100vh;
-  min-width: 1280px;
   min-height: 200px;
   background-color: var(--colorBlanco);
   overflow: hidden;

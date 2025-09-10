@@ -10,10 +10,15 @@ import { useEffect, useState } from "react";
 import { LugarProp } from "../../../modelos/lugar.esquema";
 import Boton from "../../../componente-estilos/boton/boton";
 import Foco from "../../../assets/icons/foco_prendido.svg?react"
+import NoFoco from "../../../assets/icons/foco_apagado.svg?react"
+import { FocoProp } from "../../../modelos/foco.esquema";
+import useFocoApi from "../../../servicios/foco/useFocoApi";
 
 
 const Inicio = () => {
-  const { datos } = useGlobalContext();
+  const { datos, setDatos } = useGlobalContext();
+  const {editarFoco, responseFoco} = useFocoApi();
+  const [id, setId]=useState<string>('')
   const [lugarActual,setLugarActual] = useState<LugarProp | null>(null)
   const { control, formState: { errors }, watch } = useForm<FormValuesInicio>({
     resolver: zodResolver(inicio),
@@ -22,12 +27,42 @@ const Inicio = () => {
     }
   });
   useEffect(()=>{
-    if(watch().lugar){
-      const id:string =watch().lugar;
+    setId(watch().lugar)
+  },[watch().lugar])
+  useEffect(()=>{
+    if(id){
       const lugar: LugarProp | undefined = datos?.lugar?.find(l=>l.id ===id)
       setLugarActual(lugar? lugar : null);
     }
-  }, [watch().lugar])
+  }, [id])
+
+  useEffect(() => {
+  if (!responseFoco) return;
+
+  setDatos((prev) => {
+    if (!prev) return prev;
+    console.log('response', responseFoco);
+    
+    return {
+      ...prev,
+      lugar: prev.lugar.map((lugar) => {
+        if (lugar.id !== id) return lugar;
+
+        return {
+          ...lugar,
+          foco: lugar.foco.map((foco) =>
+            foco.id === responseFoco.id ? responseFoco : foco
+          ),
+        };
+      }),
+    };
+  });
+}, [responseFoco]);
+
+
+  const handleClick = (f:FocoProp) =>{
+    editarFoco({nombre:f.nombre, estado:!f.estado},f.id)
+  }
 
   if(!datos) return <Texto texto={"Todavía no hay lugares cargados"}/>
   return (
@@ -39,9 +74,9 @@ const Inicio = () => {
           lugarActual?.foco?.map(f=>(
             <Boton
               key={f.id}
-              icono={<Foco/>}
-              nuevoEstilo="btn-icono-chico"
-              secundario
+              icono={f.estado ? <Foco/> : <NoFoco/>}
+              nuevoEstilo={`btn-icono-chico ${f.estado ? 'btn-prendido' : 'btn-apagado'}`}
+              onClick={()=>handleClick(f)}
             />
           ))
         }
